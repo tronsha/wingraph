@@ -378,10 +378,6 @@ void __fastcall TFormGraph::MenuInfoClick(TObject *Sender)
 {
     FormInfo->Position = poMainFormCenter;
     FormInfo->Visible = true;
-    //Application->Initialize();
-    //Application->CreateForm(__classid(TFormInfo), &FormInfo);
-    //Application->Run();
-    //ShellAbout(Handle, "WinGraph","Version 1.0.0.0 \nDiese Anwendung darf frei kopiert werden!", Application->Icon->Handle);
 }
 //---------------------------------------------------------------------------
 

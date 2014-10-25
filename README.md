@@ -10,6 +10,10 @@ This program is written and compiled with the Turbo C++ 2006 Explorer Edition
 * [GitHub][1]
 * [Homepage][2]
 
+## Screenshot
+
+![](screenshot.png)
+
 ## License
 [![GNU General Public License](http://www.gnu.org/graphics/gplv3-127x51.png)][3]
 
