@@ -14,6 +14,11 @@ This program is written and compiled with the Turbo C++ 2006 Explorer Edition
 
 ![](screenshot.png)
 
+## Hidden Function
+
+* Press __Ctrl + Shift + F8__ to switch the mode.
+* Press __Ctrl + Shift + F7__ to switch back.
+
 ## License
 
 [![GNU General Public License](http://www.gnu.org/graphics/gplv3-127x51.png)][3]
