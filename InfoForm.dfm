@@ -24,7 +24,7 @@ object FormInfo: TFormInfo
   object LabelInfoName: TLabel
     Left = 31
     Top = 8
-    Width = 235
+    Width = 233
     Height = 64
     Caption = 'WinGraph'
     Font.Charset = DEFAULT_CHARSET
@@ -65,7 +65,7 @@ object FormInfo: TFormInfo
   object LabelInfoVersion: TLabel
     Left = 31
     Top = 115
-    Width = 44
+    Width = 43
     Height = 15
     Anchors = [akBottom]
     Caption = 'Version:'
@@ -93,7 +93,7 @@ object FormInfo: TFormInfo
   object LabelInfoHomepageText: TLabel
     Left = 100
     Top = 99
-    Width = 112
+    Width = 111
     Height = 15
     Cursor = crHandPoint
     Anchors = [akBottom]
@@ -109,7 +109,7 @@ object FormInfo: TFormInfo
   object LabelInfoVersionText: TLabel
     Left = 100
     Top = 115
-    Width = 33
+    Width = 24
     Height = 15
     Anchors = [akBottom]
     Caption = '2.5.1'

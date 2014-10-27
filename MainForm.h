@@ -1,25 +1,21 @@
 //---------------------------------------------------------------------------
-
 #ifndef MainFormH
 #define MainFormH
 //---------------------------------------------------------------------------
 #include <Classes.hpp>
 #include <Controls.hpp>
-#include <StdCtrls.hpp>
-#include <Forms.hpp>
+#include <Dialogs.hpp>
 #include <ExtCtrls.hpp>
 #include <Graphics.hpp>
 #include <Menus.hpp>
-#include <Dialogs.hpp>
-#include <ExtDlgs.hpp>
-#include "SHDocVw_OCX.h"
-#include <OleCtrls.hpp>
-#include <ComCtrls.hpp>
+#include <StdCtrls.hpp>
+#include <windows.h>
+#include <initguid.h>
+#include <gdiplus.h>
+#include <stdio.h>
+#include <math.h>
 #include "funktion.h"
-#include <ImgList.hpp>
-#include <ScktComp.hpp>
-#include <Sockets.hpp>
-//---------------------------------------------------------------------------
+//#-------------------------------------------------------------------------
 class TFormGraph : public TForm
 {
 __published:    // IDE-managed Components
@@ -101,8 +97,8 @@ __published:    // IDE-managed Components
         void __fastcall Edit_yAxisKeyPress(TObject *Sender, char &Key);
         void __fastcall Menu_yAxisXClick(TObject *Sender);
         void __fastcall MenuColorClick(TObject *Sender);
-        void __fastcall render(bool reset);
         void __fastcall changeWindow();
+        void __fastcall render(bool reset);
         double __fastcall y(double x);
 private:        // User declarations
         Funktion funk;

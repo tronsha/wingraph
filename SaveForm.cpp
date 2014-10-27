@@ -3,10 +3,6 @@
 #define INITGUID
 #include <vcl.h>
 #undef INITGUID
-#include <windows.h>
-#include <initguid.h>
-#include <gdiplus.h>
-#include <stdio.h>
 #pragma hdrstop
 #include "SaveForm.h"
 #include "MainForm.h"

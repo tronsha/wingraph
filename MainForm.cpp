@@ -3,11 +3,6 @@
 #define INITGUID
 #include <vcl.h>
 #undef INITGUID
-#include <windows.h>
-#include <initguid.h>
-#include <gdiplus.h>
-#include <stdio.h>
-#include <math.h>
 #pragma hdrstop
 //---------------------------------------------------------------------------
 #include "info.h"
@@ -34,8 +29,7 @@ AnsiString prepareFunctionString(AnsiString in)
     int length = in.Length();
     int i, j;
     char oldFunctionString[STR_SIZE];
-    char newFunctionString[STR_SIZE*2];
-    AnsiString out;
+    char newFunctionString[STR_SIZE * 2];
 
     newFunctionString[0] = '\0';
 
@@ -53,7 +47,7 @@ AnsiString prepareFunctionString(AnsiString in)
     }
     newFunctionString[j] = '\0';
 
-    return newFunctionString;
+    return (AnsiString) newFunctionString;
 }
 //---------------------------------------------------------------------------
 void axis(float xMax, float yMax)
@@ -64,52 +58,52 @@ void axis(float xMax, float yMax)
 
     FormGraph->PaintBox->Canvas->Pen->Color = clWhite;
     FormGraph->PaintBox->Canvas->Pen->Width = 1000;
-    FormGraph->PaintBox->Canvas->MoveTo(0, WY/2);
-    FormGraph->PaintBox->Canvas->LineTo(WX, WY/2);
+    FormGraph->PaintBox->Canvas->MoveTo(0, WY / 2);
+    FormGraph->PaintBox->Canvas->LineTo(WX, WY / 2);
 
     FormGraph->PaintBox->Canvas->Pen->Color = clBlack;
     FormGraph->PaintBox->Canvas->Pen->Width = 1;
 
-    FormGraph->PaintBox->Canvas->MoveTo(0, WY/2);
-    FormGraph->PaintBox->Canvas->LineTo(WX, WY/2);
-    FormGraph->PaintBox->Canvas->MoveTo(WX/2,0);
-    FormGraph->PaintBox->Canvas->LineTo(WX/2,WY);
+    FormGraph->PaintBox->Canvas->MoveTo(0, WY / 2);
+    FormGraph->PaintBox->Canvas->LineTo(WX, WY / 2);
+    FormGraph->PaintBox->Canvas->MoveTo(WX / 2, 0);
+    FormGraph->PaintBox->Canvas->LineTo(WX / 2, WY);
 
-    for (i = -x+1; i <= x-1; i++)
+    for (i = -x + 1; i <= x - 1; i++)
     {
-        FormGraph->PaintBox->Canvas->MoveTo(WX/2-WX/2*i/x,WY/2-2);
-        FormGraph->PaintBox->Canvas->LineTo(WX/2-WX/2*i/x,WY/2+3);
+        FormGraph->PaintBox->Canvas->MoveTo(WX / 2 - WX / 2 * i / x, WY / 2 - 2);
+        FormGraph->PaintBox->Canvas->LineTo(WX / 2 - WX / 2 * i / x, WY / 2 + 3);
     }
-    for (i = -y+1; i <= y-1; i++)
+    for (i = -y + 1; i <= y - 1; i++)
     {
-        FormGraph->PaintBox->Canvas->MoveTo(WX/2-2,WY/2-WY/2*i/y);
-        FormGraph->PaintBox->Canvas->LineTo(WX/2+3,WY/2-WY/2*i/y);
+        FormGraph->PaintBox->Canvas->MoveTo(WX / 2 - 2, WY / 2 - WY / 2 * i / y);
+        FormGraph->PaintBox->Canvas->LineTo(WX / 2 + 3, WY / 2 - WY / 2 * i / y);
     }
 
-    FormGraph->PaintBox->Canvas->MoveTo(WX,WY/2);
-    FormGraph->PaintBox->Canvas->LineTo(WX-9,WY/2+3);
-    FormGraph->PaintBox->Canvas->MoveTo(WX,WY/2);
-    FormGraph->PaintBox->Canvas->LineTo(WX-9,WY/2-3);
-    FormGraph->PaintBox->Canvas->MoveTo(WX/2,0);
-    FormGraph->PaintBox->Canvas->LineTo(WX/2-3,9);
-    FormGraph->PaintBox->Canvas->MoveTo(WX/2,0);
-    FormGraph->PaintBox->Canvas->LineTo(WX/2+3,9);
+    FormGraph->PaintBox->Canvas->MoveTo(WX, WY / 2);
+    FormGraph->PaintBox->Canvas->LineTo(WX - 9, WY / 2 + 3);
+    FormGraph->PaintBox->Canvas->MoveTo(WX, WY / 2);
+    FormGraph->PaintBox->Canvas->LineTo(WX - 9, WY / 2 - 3);
+    FormGraph->PaintBox->Canvas->MoveTo(WX / 2, 0);
+    FormGraph->PaintBox->Canvas->LineTo(WX / 2 - 3, 9);
+    FormGraph->PaintBox->Canvas->MoveTo(WX / 2, 0);
+    FormGraph->PaintBox->Canvas->LineTo(WX / 2 + 3, 9);
 
-    FormGraph->PaintBox->Canvas->TextOut(WX-12,WY/2+4,"X");
-    FormGraph->PaintBox->Canvas->TextOut(WX/2-14,2,"Y");
+    FormGraph->PaintBox->Canvas->TextOut(WX - 12, WY / 2 + 4, "X");
+    FormGraph->PaintBox->Canvas->TextOut(WX / 2 - 14, 2, "Y");
 }
 //---------------------------------------------------------------------------
 float scale_x(float xMax)
 {
     float result;
-    result = (WX/2) / xMax;
+    result = (WX / 2) / xMax;
     return result;
 }
 //---------------------------------------------------------------------------
 float scale_y(float yMax)
 {
     float result;
-    result = (WY/2) / yMax;
+    result = (WY / 2) / yMax;
     return result;
 }
 //---------------------------------------------------------------------------
@@ -118,7 +112,7 @@ void curve(float xMax, float yMax, float step)
     float x, scale_x2, scale_y2;
     int pos_y, pos_x;
 
-    FormGraph->PaintBox->Canvas->Pen->Color = drawingColor;
+    FormGraph->PaintBox->Canvas->Pen->Color = (TColor) drawingColor;
     FormGraph->PaintBox->Canvas->Pen->Width = 1;
 
     scale_x2 = scale_x(xMax);
@@ -127,7 +121,7 @@ void curve(float xMax, float yMax, float step)
     pos_x = -xMax * scale_x2;
     pos_y = FormGraph->y(-xMax) * scale_y2;
 
-    FormGraph->PaintBox->Canvas->MoveTo(WX/2 + pos_x, WY/2 - pos_y);
+    FormGraph->PaintBox->Canvas->MoveTo(WX / 2 + pos_x, WY / 2 - pos_y);
 
     for(x = -xMax; x <= xMax; x = x + step)
     {
@@ -171,12 +165,12 @@ double __fastcall TFormGraph::y(double x)
 //---------------------------------------------------------------------------
 void __fastcall TFormGraph::DrawButtonClick(TObject *Sender)
 {
-	render(true);
+    render(true);
 }
 //---------------------------------------------------------------------------
 void __fastcall TFormGraph::MenuDrawClick(TObject *Sender)
 {
-	render(true);
+    render(true);
 }
 //---------------------------------------------------------------------------
 void __fastcall TFormGraph::MenuAddedToDrawClick(TObject *Sender)
@@ -199,10 +193,10 @@ void __fastcall TFormGraph::render(bool reset)
     if(FormGraph->MenuFourierSynthesis->Checked == true)
         yMax = 2;
 
-    if(((xMax+yMax)/2) <= 30)
-        step = 0.01/((xMax+yMax)/4);
+    if(((xMax + yMax) / 2) <= 30)
+        step = 0.01 / ((xMax + yMax) / 4);
     else
-        step = 0.01/(16);
+        step = 0.01 / 16;
 
     if(reset)
         axis(xMax, yMax);
@@ -235,7 +229,7 @@ void __fastcall TFormGraph::EditKeyPress(TObject *Sender, char &Key)
     {
         if(Key == '\r')
         {
-			render(true);
+            render(true);
             Key = '\0';
         }
         if(Key == '.')
@@ -245,7 +239,7 @@ void __fastcall TFormGraph::EditKeyPress(TObject *Sender, char &Key)
     {
         if(Key == '\r')
         {
-			render(true);
+            render(true);
             Key = '\0';
         }
         else if(((Key >= '0')&&(Key <= '9'))||(Key == '\x08'))
@@ -402,7 +396,7 @@ void __fastcall TFormGraph::changeWindow()
     {
         if((FormGraph->MenuFourierSynthesis->Checked == false)||(FormGraph->Edit8->Text != ""))
         {
-			FormGraph->render(true);
+            FormGraph->render(true);
         }
         else
         {

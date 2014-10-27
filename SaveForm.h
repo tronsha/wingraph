@@ -7,6 +7,7 @@
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 #include <Menus.hpp>
+#include <gdiplus.h>
 //---------------------------------------------------------------------------
 class TFormSave : public TForm
 {
