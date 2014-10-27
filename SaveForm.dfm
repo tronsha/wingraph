@@ -3,7 +3,7 @@ object FormSave: TFormSave
   Top = 809
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
-  Caption = ' Speichern'
+  Caption = 'Speichern'
   ClientHeight = 65
   ClientWidth = 224
   Color = clBlack

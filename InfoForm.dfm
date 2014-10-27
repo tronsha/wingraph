@@ -3,7 +3,7 @@ object FormInfo: TFormInfo
   Top = 215
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = ' Info '#252'ber WinGraph'
+  Caption = 'Info '#252'ber WinGraph'
   ClientHeight = 181
   ClientWidth = 302
   Color = clBtnFace

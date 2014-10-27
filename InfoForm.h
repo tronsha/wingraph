@@ -1,5 +1,4 @@
 //---------------------------------------------------------------------------
-
 #ifndef InfoFormH
 #define InfoFormH
 //---------------------------------------------------------------------------
@@ -12,7 +11,7 @@
 //---------------------------------------------------------------------------
 class TFormInfo : public TForm
 {
-__published:    // IDE-managed Components
+    __published: // IDE-managed Components
         TButton *ButtonOK;
         TLabel *LabelInfoName;
         TLabel *LabelInfoCopyright;
@@ -25,8 +24,8 @@ __published:    // IDE-managed Components
         void __fastcall ButtonOKClick(TObject *Sender);
         void __fastcall FormDeactivate(TObject *Sender);
         void __fastcall FormCreate(TObject *Sender);
-private:    // User declarations
-public:     // User declarations
+    private: // User declarations
+    public:  // User declarations
         __fastcall TFormInfo(TComponent* Owner);
 };
 //---------------------------------------------------------------------------

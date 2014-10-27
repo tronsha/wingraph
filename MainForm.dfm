@@ -3,7 +3,7 @@ object FormGraph: TFormGraph
   Top = 18
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = ' WinGraph'
+  Caption = 'WinGraph'
   ClientHeight = 449
   ClientWidth = 380
   Color = clBtnShadow
@@ -1508,7 +1508,7 @@ object FormGraph: TFormGraph
     TabOrder = 0
     OnClick = DrawButtonClick
   end
-  object Edit8: TEdit
+  object EditFourierSynthesis: TEdit
     Left = 240
     Top = 40
     Width = 41
@@ -1532,7 +1532,7 @@ object FormGraph: TFormGraph
       Height = 375
     end
   end
-  object fVonXEdit: TEdit
+  object FunctionEdit: TEdit
     Left = 48
     Top = 8
     Width = 233
@@ -1549,7 +1549,7 @@ object FormGraph: TFormGraph
     Color = clInfoBk
     TabOrder = 5
     Visible = False
-    object Label_xAches: TLabel
+    object Label_xAxis: TLabel
       Left = 32
       Top = 12
       Width = 149
@@ -1571,14 +1571,14 @@ object FormGraph: TFormGraph
       Text = '10'
       OnKeyPress = Edit_xAxisKeyPress
     end
-    object Button_xAches: TButton
+    object Button_xAxis: TButton
       Left = 296
       Top = 6
       Width = 75
       Height = 25
       Caption = #196'ndern'
       TabOrder = 1
-      OnClick = Button_xAchesClick
+      OnClick = Button_xAxisClick
     end
   end
   object Panel_yAxis: TPanel
@@ -1707,11 +1707,6 @@ object FormGraph: TFormGraph
     end
     object MenuHelp: TMenuItem
       Caption = '?'
-      object MenuInfo: TMenuItem
-        Caption = 'Info'
-        ShortCut = 123
-        OnClick = MenuInfoClick
-      end
       object MenuExamples: TMenuItem
         Caption = 'Beispiele'
         object Example_x: TMenuItem
@@ -1739,10 +1734,15 @@ object FormGraph: TFormGraph
           OnClick = Example_sin_xClick
         end
       end
-      object MenuHomepage: TMenuItem
-        Caption = 'http://www.mpcx.net'
-        Visible = False
-        OnClick = MenuHomepageClick
+      object MenuLicense: TMenuItem
+        Caption = 'Lizenz'
+        ShortCut = 122
+        OnClick = MenuLicenseClick
+      end
+      object MenuInfo: TMenuItem
+        Caption = 'Info'
+        ShortCut = 123
+        OnClick = MenuInfoClick
       end
     end
   end
@@ -1754,15 +1754,6 @@ object FormGraph: TFormGraph
   end
   object ColorDialog: TColorDialog
     Left = 304
-    Top = 40
-  end
-  object SaveDialog1: TSaveDialog
-    DefaultExt = 'png'
-    Filter = 
-      'Portable Network Graphics (*.png)|*.png|JPEG-Grafikdatei (*.jpg)' +
-      '|*.jpg|Bitmaps (*.bmp)|*.bmp|Tagged Image File Format (*.tif)|*.' +
-      'tif|Graphics Interchange Format (*.gif)|*.gif'
-    Left = 280
     Top = 40
   end
 end

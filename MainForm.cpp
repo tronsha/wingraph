@@ -141,8 +141,8 @@ double __fastcall TFormGraph::y(double x)
     double a0nx;
     double result;
 
-    if(FormGraph->Edit8->Text != "")
-        a0nx = FormGraph->Edit8->Text.ToDouble();
+    if(FormGraph->EditFourierSynthesis->Text != "")
+        a0nx = FormGraph->EditFourierSynthesis->Text.ToDouble();
     else
         a0nx = 0;
 
@@ -182,7 +182,7 @@ void __fastcall TFormGraph::render(bool reset)
 {
     char fString[STR_SIZE];
 
-    strncpy(fString, prepareFunctionString(fVonXEdit->Text).c_str(), STR_SIZE - 1);
+    strncpy(fString, prepareFunctionString(FunctionEdit->Text).c_str(), STR_SIZE - 1);
     strcat(fString, "  ");
     funk.initBaum(fString, NULL, opt);
 
@@ -281,120 +281,46 @@ int max_y()
 //---------------------------------------------------------------------------
 void __fastcall TFormGraph::Example_1x3x025x075Click(TObject *Sender)
 {
-    fVonXEdit->Text = "x^3-3x^2-0,25x+0,75";
+    FunctionEdit->Text = "x^3-3x^2-0,25x+0,75";
 }
 //---------------------------------------------------------------------------
 void __fastcall TFormGraph::Example_2x3x4Click(TObject *Sender)
 {
-    fVonXEdit->Text = "2x^2/(3x^2-4)";
+    FunctionEdit->Text = "2x^2/(3x^2-4)";
 }
 //---------------------------------------------------------------------------
 void __fastcall TFormGraph::Example_xx4Click(TObject *Sender)
 {
-    fVonXEdit->Text = "x/(x^2-4)";
+    FunctionEdit->Text = "x/(x^2-4)";
 }
 //---------------------------------------------------------------------------
 void __fastcall TFormGraph::Example_xClick(TObject *Sender)
 {
-    fVonXEdit->Text = "x^2";
+    FunctionEdit->Text = "x^2";
 }
 //---------------------------------------------------------------------------
 void __fastcall TFormGraph::Example_1xClick(TObject *Sender)
 {
-    fVonXEdit->Text = "1/x";
+    FunctionEdit->Text = "1/x";
 }
 //---------------------------------------------------------------------------
 void __fastcall TFormGraph::Example_sin_xClick(TObject *Sender)
 {
-    fVonXEdit->Text = "sin(x)";
+    FunctionEdit->Text = "sin(x)";
 }
 //---------------------------------------------------------------------------
 void __fastcall TFormGraph::MenuSaveClick(TObject *Sender)
 {
-    bool x = false;
-    
-    if(x)
-    {
-        FILE * pFile;
-        int returnValue = 0;
-        int filterIndex = 0;
-        AnsiString FileName;
-        AnsiString MSG;
-
-        if(SaveDialog1->Execute())
-        {
-            FileName = SaveDialog1->FileName;
-            filterIndex = SaveDialog1->FilterIndex;
-            pFile = fopen(FileName.c_str(), "r");
-            if(pFile == NULL)
-            {
-                returnValue = 6;
-            }
-            else
-            {
-                fclose(pFile);
-                MSG = FileName + " existiert bereits.\nMöchten Sie die Datei ersetzen?";
-                returnValue = MessageBox(NULL, MSG.c_str(), "Datei speichern", MB_YESNO | MB_ICONEXCLAMATION);
-            }
-            if(returnValue == 6)
-            {
-                if(filterIndex == 1 || filterIndex == 2 || filterIndex == 4 || filterIndex == 5)
-                {
-                    GdiplusStartupInput gdiplusStartupInput;
-                    ULONG_PTR gdiplusToken;
-                    GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
-
-                    CLSID    encoderClsid;
-                    Image*   image;
-                    WCHAR    filename[1024];
-
-                    FormGraph->PaintBox->Picture->SaveToFile("graph.tmp");
-
-                    image = new Image(L"graph.tmp");
-
-                    if(filterIndex == 1)
-                    {
-                        GetEncoderClsid(L"image/png", &encoderClsid);
-                    }
-                    if(filterIndex == 2)
-                    {
-                        GetEncoderClsid(L"image/jpeg", &encoderClsid);
-                    }
-                    if(filterIndex == 4)
-                    {
-                        GetEncoderClsid(L"image/tiff", &encoderClsid);
-                    }
-                    if(filterIndex == 5)
-                    {
-                        GetEncoderClsid(L"image/gif", &encoderClsid);
-                    }
-
-                    image->Save((FileName.WideChar(filename, 1024)), &encoderClsid, NULL);
-
-                    delete image;
-                    GdiplusShutdown(gdiplusToken);
-                }
-
-                if(filterIndex == 3)
-                {
-                    FormGraph->PaintBox->Picture->SaveToFile(FileName);
-                }
-            }
-        }
-    }
-    else
-    {
-        FormSave->Position = poMainFormCenter;
-        FormSave->Visible = true;
-        FormSave->EditSave->SetFocus();
-    }
+    FormSave->Position = poMainFormCenter;
+    FormSave->Visible = true;
+    FormSave->EditSave->SetFocus();
 }
 //---------------------------------------------------------------------------
 void __fastcall TFormGraph::changeWindow()
 {
     if(FormGraph->MenuSpecial->Checked == true)
     {
-        if((FormGraph->MenuFourierSynthesis->Checked == false)||(FormGraph->Edit8->Text != ""))
+        if((FormGraph->MenuFourierSynthesis->Checked == false)||(FormGraph->EditFourierSynthesis->Text != ""))
         {
             FormGraph->render(true);
         }
@@ -416,15 +342,15 @@ void __fastcall TFormGraph::MenuNormalClick(TObject *Sender)
         TimerStart->Enabled = true;
     }
 
-    FormGraph->fVonXEdit->Visible = true;
+    FormGraph->FunctionEdit->Visible = true;
     FormGraph->Label_y->Visible = true;
 
     FormGraph->MenuSpecial->Checked = false;
     FormGraph->MenuNormal->Checked = true;
     FormGraph->MenuFourierSynthesis->Checked = false;
 
-    FormGraph->Edit8->Visible = false;
-    FormGraph->Edit8->Text = "";
+    FormGraph->EditFourierSynthesis->Visible = false;
+    FormGraph->EditFourierSynthesis->Text = "";
 
     FormGraph->ClientHeight = 417;
 
@@ -453,12 +379,12 @@ void __fastcall TFormGraph::MenuFourierSynthesisClick(TObject *Sender)
     FormGraph->MenuSpecial->Checked = true;
     FormGraph->MenuFourierSynthesis->Checked = true;
 
-    FormGraph->fVonXEdit->Visible = false;
+    FormGraph->FunctionEdit->Visible = false;
     FormGraph->Label_y->Visible = false;
     FormGraph->MenuNormal->Checked = false;
 
-    FormGraph->Edit8->Visible = true;
-    FormGraph->Edit8->Text = "";
+    FormGraph->EditFourierSynthesis->Visible = true;
+    FormGraph->EditFourierSynthesis->Text = "";
 
     FormGraph->ClientHeight = 449;
 
@@ -486,7 +412,7 @@ void __fastcall TFormGraph::Menu_xAxisValueClick(TObject *Sender)
     FormGraph->Edit_xAxis->SetFocus();
 }
 //---------------------------------------------------------------------------
-void __fastcall TFormGraph::Button_xAchesClick(TObject *Sender)
+void __fastcall TFormGraph::Button_xAxisClick(TObject *Sender)
 {
     if(Edit_xAxis->Text.ToDouble() >= 50) Edit_xAxis->Text = 50;
     if(Edit_xAxis->Text.ToDouble() <= 1) Edit_xAxis->Text = 1;
@@ -500,15 +426,15 @@ void __fastcall TFormGraph::Button_xAchesClick(TObject *Sender)
 
     changeWindow();
 
-    if(FormGraph->fVonXEdit->Visible == true)
-        FormGraph->fVonXEdit->SetFocus();
+    if(FormGraph->FunctionEdit->Visible == true)
+        FormGraph->FunctionEdit->SetFocus();
 }
 //---------------------------------------------------------------------------
 void __fastcall TFormGraph::Edit_xAxisKeyPress(TObject *Sender, char &Key)
 {
     if(Key == '\r')
     {
-        Button_xAchesClick(NULL);
+        Button_xAxisClick(NULL);
         Key = '\0';
     }
     else if(((Key >= '0')&&(Key <= '9'))||(Key == '\x08'))
@@ -550,8 +476,8 @@ void __fastcall TFormGraph::Button_yAxisClick(TObject *Sender)
 
     changeWindow();
 
-    if(FormGraph->fVonXEdit->Visible == true)
-        FormGraph->fVonXEdit->SetFocus();
+    if(FormGraph->FunctionEdit->Visible == true)
+        FormGraph->FunctionEdit->SetFocus();
 }
 //---------------------------------------------------------------------------
 void __fastcall TFormGraph::Edit_yAxisKeyPress(TObject *Sender, char &Key)
@@ -573,5 +499,26 @@ void __fastcall TFormGraph::MenuColorClick(TObject *Sender)
         drawingColor = ColorDialog->Color;
 }
 //---------------------------------------------------------------------------
-
+void __fastcall TFormGraph::MenuLicenseClick(TObject *Sender)
+{
+    about();
+}
+//---------------------------------------------------------------------------
+void __fastcall TFormGraph::about()
+{
+    AnsiString strLicense = "WinGraph\n";
+    strLicense += "Copyright (c) 2002 - 2014 by Stefan Hüsges\n\n";
+    strLicense += "This program is free software: you can redistribute it and/or modify ";
+    strLicense += "it under the terms of the GNU General Public License as published by ";
+    strLicense += "the Free Software Foundation, either version 3 of the License, or ";
+    strLicense += "(at your option) any later version.\n\n";
+    strLicense += "This program is distributed in the hope that it will be useful, ";
+    strLicense += "but WITHOUT ANY WARRANTY; without even the implied warranty of ";
+    strLicense += "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the ";
+    strLicense += "GNU General Public License for more details.\n\n";                                                                                                   \
+    strLicense += "You should have received a copy of the GNU General Public License";
+    strLicense += "along with this program.  If not, see <http://www.gnu.org/licenses/>.";
+    MessageBox(Application->Handle, strLicense.c_str(), "License", MB_OK);
+}
+//---------------------------------------------------------------------------
 

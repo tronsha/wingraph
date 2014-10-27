@@ -53,8 +53,8 @@ void save()
 {
     FILE * pFile;
     int returnValue = 0;
-    AnsiString FileName;
     int FilterIndex = 0;
+    AnsiString FileName;
     AnsiString MSG;
 
     FileName = ChangeFileExt(FormSave->EditSave->Text, FormSave->LabelSave->Caption);
