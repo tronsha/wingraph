@@ -100,7 +100,7 @@ void Funktion::vereinfache (tKnotenPtr &p)
         vereinfache(p->lChild);
         vereinfache(p->rChild);
         if ((optimiere & teilBaum) != 0)
-  	{
+        {
             // aus - (-Baum) wird Baum
             if (p->operat == 's' && p->operat == p->lChild->operat == 's')
             {
@@ -137,18 +137,18 @@ void Funktion::vereinfache (tKnotenPtr &p)
         }  // if ((optimiere & teilBaum)!= 0)
         /*
         hier koennte man noch einen IF-Zweig einfuegen, der konstante
-  	Teilbaeume berechnet; aus x*3*5 sollte also x*15 werden...
+      Teilbaeume berechnet; aus x*3*5 sollte also x*15 werden...
         */
         if ((optimiere & konstanten) == 0)
             return; // raus, wenn kontanten nicht optimiert werden sollen
         double ergebnis;
         if (p->operat == '\1')
-    	    return;
+            return;
         // nur dann reingehen, wenn lChild und rChild auf Konstanten zeigen
         if (p->lChild == NULL || p->lChild->operat !=  '\0')
-    	    return;
+            return;
         if (p->rChild == NULL || p->rChild->operat !=  '\0')
-    	    return;
+            return;
         ergebnis = f(p);
         myDelete(p->lChild);
         //p->lChild = NULL;
@@ -264,11 +264,11 @@ bool Funktion::Pos(const char *w, const char *F, unsigned int s, int l)
 
 /*
 Funktion UnaereFunktion(VAR F : STRING; VAR Token : CHAR):BOOLEAN;
-BEGIN        (* Rueckgabe TRUE, falls gefunden          *)
+BEGIN           (* Rueckgabe TRUE, falls gefunden          *)
   Token := #0;  (* enthaelt Kodierung (Token) der Funktion *)
-  (* WICHTIG: bei krzeren Bezeichnern, die in l„ngeren *)
-  (* enthalten sind,  muá zuerst der lange abgefragt    *)
-  (* werden, dehalb sinh vor sin und arctanh vor arctan *)
+  (* WICHTIG: bei kuerzeren Bezeichnern, die in laengeren  *)
+  (* enthalten sind, muss zuerst der lange abgefragt       *)
+  (* werden, dehalb sinh vor sin und arctanh vor arctan    *)
 
   IF Pos('ln',F,aktPos,2) THEN Token := 'a'
 
@@ -314,7 +314,7 @@ bool Funktion::unaereFunktion(char *F, char &token)
     else if (Pos("tanh", F, aktPos, 4)) token = 'l';
     else if (Pos("sqrt", F, aktPos, 4)) token = 'm';
     else if (Pos("frac", F, aktPos, 4)) token = 'n';
-	
+
     else if (Pos("log", F, aktPos, 3)) token = 'b';
     else if (Pos("exp", F, aktPos, 3)) token = 'c';
     else if (Pos("sin", F, aktPos, 3)) token = 'd';
@@ -322,14 +322,14 @@ bool Funktion::unaereFunktion(char *F, char &token)
     else if (Pos("tan", F, aktPos, 3)) token = 'f';
     else if (Pos("abs", F, aktPos, 3)) token = 'o';
     else if (Pos("cot", F, aktPos, 3)) token = 'p';
-	
+
     else if (Pos("arctanh", F, aktPos, 7)) token = 'r';
-	
+
     else if (Pos("arcsin", F, aktPos, 6)) token = 'g';
     else if (Pos("arccos", F, aktPos, 6)) token = 'h';
     else if (Pos("arctan", F, aktPos, 6)) token = 'i';
     else if (Pos("arccot", F, aktPos, 6)) token = 'q';
-	
+
     switch (token)
     {
         case 'a':
@@ -361,7 +361,7 @@ bool Funktion::unaereFunktion(char *F, char &token)
 /*
 Funktion Faktor(VAR F : STRING):tFunktion;
 (* ist fuer Klammerung, unaere Funktionen, x, e, pi    *)
-(* und (Real-) Zahlen zust„ndig                        *)
+(* und (Real-) Zahlen zustaendig                        *)
 (* zurueckgeliefert wird Teilbaum, der obiges enthaelt *)
 VAR Knoten : tFunktion;
     valid  : INTEGER;
@@ -440,7 +440,7 @@ tKnoten *Funktion::faktor(char *F)
     unsigned int posi;
     char token;
     char fHelp[STR_SIZE] = "";
-	
+
     if(aktChar == '(' && ! fehler)
     {
         nextChar(aktPos, F);
@@ -495,7 +495,7 @@ tKnoten *Funktion::faktor(char *F)
         nextChar(aktPos, F);
         return knoten;
     } // if(Pos("pi", F, aktPos, 2))
-	
+
     if(toupper(aktChar) == 'E')
     {
         knoten = new tKnoten(knoten, '\0');
@@ -503,7 +503,7 @@ tKnoten *Funktion::faktor(char *F)
         nextChar(aktPos, F);
         return knoten;
     } //if(toupper(aktChar) == 'E')
-	
+
     if(aktChar >= '0' && aktChar <= '9' || aktChar == '.')
     {
         knoten = new tKnoten;
@@ -648,7 +648,7 @@ tKnoten* Funktion::vorzFaktor(char *F)
     }
     wurzel = faktor(F);
     return wurzel;
-	
+
 } //vorzFaktor(char *F)
 
 tKnoten *Funktion::baueBaum(char *fKlein)
@@ -685,7 +685,7 @@ tKnoten *Funktion::baueBaum(char *fKlein)
 double Funktion::f(tKnotenPtr &p)
 {
     if (p == NULL)
-  	return 0;
+      return 0;
     switch(p->operat)
     {
         case '\0': return p->operand;
@@ -743,9 +743,9 @@ struct tKnoten
     tDoublePtr operand;
     tKnoten *lChild, *rChild;
     tKnoten();
-	
+
     tKnoten(tKnoten *wurzel, char operat);
-	
+
     ~tKnoten(); // Destruktor, eruebrigt rekursive Prozedur DeleteTree()
 }; // struct tKnoten
 */

@@ -92,7 +92,7 @@ object FormGraph: TFormGraph
       0000000000000000000000000000000000000000000000000000000000000000
       00000000000000000000000000000000000000000000}
   end
-  object LabelSonder: TLabel
+  object LabelSpecial: TLabel
     Left = 56
     Top = 1
     Width = 8
@@ -1499,14 +1499,14 @@ object FormGraph: TFormGraph
     Transparent = True
     Visible = False
   end
-  object ZeichneButton: TButton
+  object DrawButton: TButton
     Left = 296
     Top = 6
     Width = 75
     Height = 25
     Caption = 'Zeichnen'
     TabOrder = 0
-    OnClick = ZeichneButtonClick
+    OnClick = DrawButtonClick
   end
   object Edit8: TEdit
     Left = 240
@@ -1540,48 +1540,7 @@ object FormGraph: TFormGraph
     TabOrder = 3
     OnKeyPress = EditKeyPress
   end
-  object PanelOutGroesse: TPanel
-    Left = 0
-    Top = 0
-    Width = 380
-    Height = 36
-    BevelOuter = bvNone
-    Color = clInfoBk
-    TabOrder = 4
-    Visible = False
-    object LabelOutGroesse: TLabel
-      Left = 8
-      Top = 12
-      Width = 247
-      Height = 15
-      Caption = 'Gr'#246#223'e des externen Fensters (x mal x Pixel)   x ='
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Times New Roman'
-      Font.Style = []
-      ParentFont = False
-    end
-    object EditOutGroesse: TEdit
-      Left = 256
-      Top = 8
-      Width = 33
-      Height = 21
-      TabOrder = 0
-      Text = '600'
-      OnKeyPress = EditOutGroesseKeyPress
-    end
-    object ButtonOutGroesse: TButton
-      Left = 296
-      Top = 6
-      Width = 75
-      Height = 25
-      Caption = #196'ndern'
-      TabOrder = 1
-      OnClick = ButtonOutGroesseClick
-    end
-  end
-  object Panel_xAchse: TPanel
+  object Panel_xAxis: TPanel
     Left = 0
     Top = 0
     Width = 380
@@ -1603,14 +1562,14 @@ object FormGraph: TFormGraph
       Font.Style = []
       ParentFont = False
     end
-    object Edit_xAchse: TEdit
+    object Edit_xAxis: TEdit
       Left = 208
       Top = 8
       Width = 33
       Height = 21
       TabOrder = 0
       Text = '10'
-      OnKeyPress = Edit_xAchseKeyPress
+      OnKeyPress = Edit_xAxisKeyPress
     end
     object Button_xAches: TButton
       Left = 296
@@ -1622,16 +1581,16 @@ object FormGraph: TFormGraph
       OnClick = Button_xAchesClick
     end
   end
-  object Panel_yAchse: TPanel
+  object Panel_yAxis: TPanel
     Left = 0
     Top = 0
     Width = 380
     Height = 36
     BevelOuter = bvNone
     Color = clInfoBk
-    TabOrder = 6
+    TabOrder = 4
     Visible = False
-    object Label_yAchse: TLabel
+    object Label_yAxis: TLabel
       Left = 32
       Top = 12
       Width = 151
@@ -1644,65 +1603,58 @@ object FormGraph: TFormGraph
       Font.Style = []
       ParentFont = False
     end
-    object Edit_yAchse: TEdit
+    object Edit_yAxis: TEdit
       Left = 208
       Top = 8
       Width = 33
       Height = 21
       TabOrder = 0
       Text = '10'
-      OnKeyPress = Edit_yAchseKeyPress
+      OnKeyPress = Edit_yAxisKeyPress
     end
-    object Button_yAchse: TButton
+    object Button_yAxis: TButton
       Left = 296
       Top = 6
       Width = 75
       Height = 25
       Caption = #196'ndern'
       TabOrder = 1
-      OnClick = Button_yAchseClick
+      OnClick = Button_yAxisClick
     end
   end
   object MainMenu: TMainMenu
     Left = 352
     Top = 40
-    object MenuDatei: TMenuItem
+    object MenuFile: TMenuItem
       Caption = 'Datei'
-      object MenuZeichne: TMenuItem
+      object MenuDraw: TMenuItem
         Caption = 'Zeichnen'
         ShortCut = 112
-        OnClick = MenuZeichneClick
+        OnClick = MenuDrawClick
       end
-      object MenuZeichneNeu: TMenuItem
+      object MenuAddedToDraw: TMenuItem
         Caption = 'Hinzuzeichnen'
         ShortCut = 16496
-        OnClick = MenuZeichneNeuClick
+        OnClick = MenuAddedToDrawClick
       end
-      object NLinie1: TMenuItem
+      object NLine1: TMenuItem
         Caption = '-'
       end
-      object MenuSpeichern: TMenuItem
+      object MenuSave: TMenuItem
         Caption = 'Speichern'
         ShortCut = 16467
-        OnClick = MenuSpeichernClick
+        OnClick = MenuSaveClick
       end
-      object MenuDrucken: TMenuItem
-        Caption = 'Drucken'
-        Enabled = False
-        ShortCut = 16452
-        Visible = False
-        OnClick = MenuDruckenClick
-      end
-      object NLinie2: TMenuItem
+      object NLine2: TMenuItem
         Caption = '-'
       end
-      object MenuBeenden: TMenuItem
+      object MenuClose: TMenuItem
         Caption = 'Beenden'
         ShortCut = 16465
-        OnClick = MenuBeendenClick
+        OnClick = MenuCloseClick
       end
     end
-    object MenuFunktion: TMenuItem
+    object MenuFunction: TMenuItem
       Caption = 'Funktion'
       Visible = False
       object MenuNormal: TMenuItem
@@ -1711,105 +1663,80 @@ object FormGraph: TFormGraph
         ShortCut = 24694
         OnClick = MenuNormalClick
       end
-      object MenuSonder: TMenuItem
+      object MenuSpecial: TMenuItem
         Caption = 'Sonderfunktionen'
-        object FourierSynthese1: TMenuItem
+        object MenuFourierSynthesis: TMenuItem
           Caption = 'Fourier-Synthese'
           ShortCut = 24695
-          OnClick = FourierSynthese1Click
+          OnClick = MenuFourierSynthesisClick
         end
       end
     end
-    object MenuEinstellungen: TMenuItem
+    object MenuSettings: TMenuItem
       Caption = 'Einstellungen'
       object MenuColor: TMenuItem
         Caption = 'Farbe'
         OnClick = MenuColorClick
       end
-      object MenuAchsen: TMenuItem
+      object MenuAxes: TMenuItem
         Caption = 'Achsenbereich'
-        object MenuxAchse: TMenuItem
+        object Menu_xAxis: TMenuItem
           Caption = 'x-Achse'
-          object MenuxAchseWert: TMenuItem
+          object Menu_xAxisValue: TMenuItem
             Caption = 'Wert '#228'ndern'
             ShortCut = 16472
-            OnClick = MenuxAchseWertClick
+            OnClick = Menu_xAxisValueClick
           end
         end
-        object MenuyAchse: TMenuItem
+        object Menu_yAxis: TMenuItem
           Caption = 'y-Achse'
-          object MenuyAchseWert: TMenuItem
+          object Menu_yAxisValue: TMenuItem
             Caption = 'Wert '#228'ndern'
             Enabled = False
             ShortCut = 16473
-            OnClick = MenuyAchseWertClick
+            OnClick = Menu_yAxisValueClick
           end
-          object MenuyAchseX: TMenuItem
+          object Menu_yAxisX: TMenuItem
             Caption = 'y-Achse wie x-Achse'
             Checked = True
             ShortCut = 49241
-            OnClick = MenuyAchseXClick
+            OnClick = Menu_yAxisXClick
           end
         end
       end
-      object MenuExtraAusgabefenster: TMenuItem
-        Caption = 'Extra Ausgabefenster'
-        object MenuJa: TMenuItem
-          AutoCheck = True
-          Caption = 'Ja'
-          RadioItem = True
-          OnClick = MenuJaClick
-        end
-        object MenuNein: TMenuItem
-          AutoCheck = True
-          Caption = 'Nein'
-          Checked = True
-          RadioItem = True
-          OnClick = MenuNeinClick
-        end
-        object NLinie3: TMenuItem
-          Caption = '-'
-          Visible = False
-        end
-        object MenuOutGroesse: TMenuItem
-          Caption = 'Gr'#246#223'e des Ausgabefensters '#228'ndern'
-          Visible = False
-          OnClick = MenuOutGroesseClick
-        end
-      end
     end
-    object MenuHilfe: TMenuItem
+    object MenuHelp: TMenuItem
       Caption = '?'
       object MenuInfo: TMenuItem
         Caption = 'Info'
         ShortCut = 123
         OnClick = MenuInfoClick
       end
-      object MenuBeispiele: TMenuItem
+      object MenuExamples: TMenuItem
         Caption = 'Beispiele'
-        object Beispielx: TMenuItem
+        object Example_x: TMenuItem
           Caption = 'x'#178
-          OnClick = BeispielxClick
+          OnClick = Example_xClick
         end
-        object Beispiel1x: TMenuItem
+        object Example_1x: TMenuItem
           Caption = '1 / x'
-          OnClick = Beispiel1xClick
+          OnClick = Example_1xClick
         end
-        object Beispiel1x3x025x075: TMenuItem
+        object Example_1x3x025x075: TMenuItem
           Caption = 'x'#179' - 3x'#178' - 0.25x +0.75'
-          OnClick = Beispiel1x3x025x075Click
+          OnClick = Example_1x3x025x075Click
         end
-        object Beispiel2x3x4: TMenuItem
+        object Example_2x3x4: TMenuItem
           Caption = '2x'#178' / (3x'#178' - 4)'
-          OnClick = Beispiel2x3x4Click
+          OnClick = Example_2x3x4Click
         end
-        object Beispielxx4: TMenuItem
+        object Example_xx4: TMenuItem
           Caption = 'x / (x'#178' - 4)'
-          OnClick = Beispielxx4Click
+          OnClick = Example_xx4Click
         end
-        object Beispielsinx: TMenuItem
+        object Example_sin_x: TMenuItem
           Caption = 'sin(x)'
-          OnClick = BeispielsinxClick
+          OnClick = Example_sin_xClick
         end
       end
       object MenuHomepage: TMenuItem
@@ -1836,11 +1763,6 @@ object FormGraph: TFormGraph
       '|*.jpg|Bitmaps (*.bmp)|*.bmp|Tagged Image File Format (*.tif)|*.' +
       'tif|Graphics Interchange Format (*.gif)|*.gif'
     Left = 280
-    Top = 40
-  end
-  object ss: TTcpServer
-    BlockMode = bmBlocking
-    Left = 256
     Top = 40
   end
 end

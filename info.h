@@ -1,0 +1,5 @@
+#define INFO_PROGRAM   "WinGraph"
+#define INFO_VERSION   "2.5.1"
+#define INFO_AUTHOR    "Stefan Hüsges"
+#define INFO_COPYRIGHT "© 2002 - 2014 by Stefan Hüsges"
+#define INFO_HOMEPAGE  "http://www.mpcx.net"

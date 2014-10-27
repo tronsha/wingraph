@@ -48,14 +48,14 @@ object FormSave: TFormSave
     TabOrder = 0
     OnKeyPress = EditSaveKeyPress
   end
-  object ButtonAbbrechen: TButton
+  object ButtonCancel: TButton
     Left = 125
     Top = 32
     Width = 75
     Height = 25
     Caption = 'Abbrechen'
     TabOrder = 2
-    OnClick = ButtonAbbrechenClick
+    OnClick = ButtonCancelClick
   end
   object MainMenuSave: TMainMenu
     Top = 32
@@ -63,20 +63,20 @@ object FormSave: TFormSave
       Caption = 'PNG'
       OnClick = MenuSavePNGClick
     end
-    object MenuSaveBitmaps: TMenuItem
+    object MenuSaveBMP: TMenuItem
       Caption = 'BMP'
-      OnClick = MenuSaveBitmapsClick
+      OnClick = MenuSaveBMPClick
     end
     object MenuSaveGIF: TMenuItem
       Caption = 'GIF'
       OnClick = MenuSaveGIFClick
     end
     object MenuSaveTIFF: TMenuItem
-      Caption = 'TIFF'
+      Caption = 'TIF'
       OnClick = MenuSaveTIFFClick
     end
     object MenuSaveJPEG: TMenuItem
-      Caption = 'JPEG'
+      Caption = 'JPG'
       OnClick = MenuSaveJPEGClick
     end
   end

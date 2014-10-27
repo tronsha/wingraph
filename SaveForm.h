@@ -1,7 +1,6 @@
 //---------------------------------------------------------------------------
-
-#ifndef graph_saveH
-#define graph_saveH
+#ifndef SaveFormH
+#define SaveFormH
 //---------------------------------------------------------------------------
 #include <Classes.hpp>
 #include <Controls.hpp>
@@ -11,28 +10,28 @@
 //---------------------------------------------------------------------------
 class TFormSave : public TForm
 {
-__published:	// IDE-managed Components
+__published:    // IDE-managed Components
         TButton *ButtonSave;
         TEdit *EditSave;
         TLabel *LabelSave;
-        TButton *ButtonAbbrechen;
+        TButton *ButtonCancel;
         TMainMenu *MainMenuSave;
         TMenuItem *MenuSaveJPEG;
-        TMenuItem *MenuSaveBitmaps;
+        TMenuItem *MenuSaveBMP;
         TMenuItem *MenuSavePNG;
-	TMenuItem *MenuSaveTIFF;
-	TMenuItem *MenuSaveGIF;
+        TMenuItem *MenuSaveTIFF;
+        TMenuItem *MenuSaveGIF;
         void __fastcall ButtonSaveClick(TObject *Sender);
-        void __fastcall ButtonAbbrechenClick(TObject *Sender);
+        void __fastcall ButtonCancelClick(TObject *Sender);
         void __fastcall EditSaveKeyPress(TObject *Sender, char &Key);
         void __fastcall FormDeactivate(TObject *Sender);
         void __fastcall MenuSaveJPEGClick(TObject *Sender);
-        void __fastcall MenuSaveBitmapsClick(TObject *Sender);
+        void __fastcall MenuSaveBMPClick(TObject *Sender);
         void __fastcall MenuSavePNGClick(TObject *Sender);
-	void __fastcall MenuSaveTIFFClick(TObject *Sender);
-	void __fastcall MenuSaveGIFClick(TObject *Sender);
-private:	// User declarations
-public:		// User declarations
+        void __fastcall MenuSaveTIFFClick(TObject *Sender);
+        void __fastcall MenuSaveGIFClick(TObject *Sender);
+private:    // User declarations
+public:     // User declarations
         __fastcall TFormSave(TComponent* Owner);
 };
 //---------------------------------------------------------------------------

@@ -22,7 +22,7 @@ object FormInfo: TFormInfo
   PixelsPerInch = 96
   TextHeight = 13
   object LabelInfoName: TLabel
-    Left = 32
+    Left = 31
     Top = 8
     Width = 235
     Height = 64
@@ -34,27 +34,13 @@ object FormInfo: TFormInfo
     Font.Style = []
     ParentFont = False
   end
-  object LabelInfoCopy: TLabel
+  object LabelInfoCopyright: TLabel
     Left = 31
     Top = 83
     Width = 57
     Height = 15
     Anchors = [akBottom]
     Caption = 'Copyright:'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'Times New Roman'
-    Font.Style = []
-    ParentFont = False
-  end
-  object LabelInfoVersion: TLabel
-    Left = 31
-    Top = 115
-    Width = 44
-    Height = 15
-    Anchors = [akBottom]
-    Caption = 'Version:'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -76,23 +62,21 @@ object FormInfo: TFormInfo
     Font.Style = []
     ParentFont = False
   end
-  object LabelInfoURL: TLabel
-    Left = 101
-    Top = 99
-    Width = 112
+  object LabelInfoVersion: TLabel
+    Left = 31
+    Top = 115
+    Width = 44
     Height = 15
-    Cursor = crHandPoint
     Anchors = [akBottom]
-    Caption = 'http://www.mpcx.net'
+    Caption = 'Version:'
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clNavy
+    Font.Color = clWindowText
     Font.Height = -13
     Font.Name = 'Times New Roman'
-    Font.Style = [fsItalic, fsUnderline]
+    Font.Style = []
     ParentFont = False
-    OnClick = LabelInfoURLClick
   end
-  object LabelInfoCopyName: TLabel
+  object LabelInfoCopyrightText: TLabel
     Left = 100
     Top = 83
     Width = 91
@@ -106,13 +90,29 @@ object FormInfo: TFormInfo
     Font.Style = []
     ParentFont = False
   end
-  object LabelInfoVersionNummer: TLabel
-    Left = 102
+  object LabelInfoHomepageText: TLabel
+    Left = 100
+    Top = 99
+    Width = 112
+    Height = 15
+    Cursor = crHandPoint
+    Anchors = [akBottom]
+    Caption = 'http://www.mpcx.net'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clNavy
+    Font.Height = -13
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsItalic, fsUnderline]
+    ParentFont = False
+    OnClick = LabelInfoHomepageClick
+  end
+  object LabelInfoVersionText: TLabel
+    Left = 100
     Top = 115
     Width = 33
     Height = 15
     Anchors = [akBottom]
-    Caption = '2.4.1.0'
+    Caption = '2.5.1'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
