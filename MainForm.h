@@ -15,7 +15,6 @@
 #include "SHDocVw_OCX.h"
 #include <OleCtrls.hpp>
 #include <ComCtrls.hpp>
-
 #include "funktion.h"
 #include <ImgList.hpp>
 #include <ScktComp.hpp>
@@ -102,10 +101,9 @@ __published:    // IDE-managed Components
         void __fastcall Edit_yAxisKeyPress(TObject *Sender, char &Key);
         void __fastcall Menu_yAxisXClick(TObject *Sender);
         void __fastcall MenuColorClick(TObject *Sender);
-		double __fastcall y(double x);
         void __fastcall render(bool reset);
-//        void __fastcall render2();
         void __fastcall changeWindow();
+        double __fastcall y(double x);
 private:        // User declarations
         Funktion funk;
         Funktion::eOptimiere opt;
