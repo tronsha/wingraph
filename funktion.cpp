@@ -2,7 +2,6 @@
 // W. Boeck, 00-09-16
 // "Uebersetzung" eines PASCAL Programms
 // aus ct8912250 (ct 12/89 S. 250 ff)
-//#include <vcl/vcl.h>
 #include <ctype.h>  // fuer tuupper()
 #include "funktion.h"
 

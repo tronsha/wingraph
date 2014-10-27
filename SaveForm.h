@@ -38,7 +38,7 @@ public:     // User declarations
 //---------------------------------------------------------------------------
 extern PACKAGE TFormSave *FormSave;
 //---------------------------------------------------------------------------
-int GetEncoderClsid(const WCHAR* format, CLSID* pClsid)
+int GetEncoderClsid(const WCHAR* format, CLSID* pClsid) //http://msdn.microsoft.com/en-us/library/windows/desktop/ms533843(v=vs.85).aspx
 {
    UINT  num = 0;          // number of image encoders
    UINT  size = 0;         // size of the image encoder array in bytes
