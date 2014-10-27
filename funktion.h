@@ -50,14 +50,14 @@ class Funktion
 {
 public:
     const static char fehlerMeldung[] [30];
-  enum eOptimiere {nichts = 0, teilBaum = 1, konstanten = 2};
+    enum eOptimiere {nichts = 0, teilBaum = 1, konstanten = 2};
 private:
     double x; // wegen geschachtelter Funktion f() in PASCAL-Funktion berechne();
     bool success, fehler;
     int aktPos, fehlerArt;
     int fehlerPos, fehlerNr;
     char aktChar;
-  eOptimiere optimiere;
+    eOptimiere optimiere;
     char FStr[STR_SIZE];
     tKnoten *F1; // die Wurzel des Funktionsbaums
     ostream *errStream;
@@ -84,9 +84,9 @@ public:
     ~Funktion();
     bool initBaum
     (
-      const char *F, // das ist der FunktionsString
-      ostream *errStr = NULL, // Fehlermeldung bzw. "Funktion OK"
-      eOptimiere opt = teilBaum // voreingestellt ist Teilboum
+        const char *F, // das ist der FunktionsString
+        ostream *errStr = NULL, // Fehlermeldung bzw. "Funktion OK"
+        eOptimiere opt = teilBaum // voreingestellt ist Teilboum
     );
     double berechne(double x);
 }; //
