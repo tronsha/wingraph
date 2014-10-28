@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+?//---------------------------------------------------------------------------
 #define STRICT
 #define INITGUID
 #include <vcl.h>
@@ -25,30 +25,18 @@ __fastcall TFormGraph::TFormGraph(TComponent* Owner) : TForm(Owner), isFunkReady
 {
 }
 //---------------------------------------------------------------------------
-AnsiString prepareFunctionString(AnsiString in)
+AnsiString prepareFunctionString(AnsiString strFunction)
 {
-    int length = in.Length();
-    int i, j;
-    char oldFunctionString[STR_SIZE];
-    char newFunctionString[STR_SIZE * 2];
-
-    newFunctionString[0] = '\0';
-
-    strncpy(oldFunctionString, in.c_str(), STR_SIZE);
-
-    for(i = 0, j = 0; i < length; i++, j++)
+    AnsiString strPart;
+    for(int index = 1; index < strFunction.Length(); index++)
     {
-        newFunctionString[j] = oldFunctionString[i];
-        if(oldFunctionString[i] >= '0' && oldFunctionString[i] <= '9' && (oldFunctionString[i+1] == 'x' || oldFunctionString[i+1] == '('))
+        strPart = strFunction.SubString(index, 2);
+        if(strPart.c_str()[0] >= '0' && strPart.c_str()[0] <= '9' && (strPart.c_str()[1] == 'x' || strPart.c_str()[1] == '('))
         {
-            j++;
-            newFunctionString[j] = '*';
+            strFunction.Insert("*", index + 1);
         }
-        newFunctionString[j+1] = '\0';
     }
-    newFunctionString[j] = '\0';
-
-    return (AnsiString) newFunctionString;
+    return strFunction;
 }
 //---------------------------------------------------------------------------
 void axis(float xMax, float yMax)
@@ -508,7 +496,7 @@ void __fastcall TFormGraph::MenuLicenseClick(TObject *Sender)
 void __fastcall TFormGraph::about()
 {
     AnsiString strLicense = "WinGraph\n";
-    strLicense += "Copyright (c) 2002 - 2014 by Stefan HÃ¼sges\n\n";
+    strLicense += "Copyright (c) 2002 - 2014 by Stefan Hüsges\n\n";
     strLicense += "This program is free software: you can redistribute it and/or modify ";
     strLicense += "it under the terms of the GNU General Public License as published by ";
     strLicense += "the Free Software Foundation, either version 3 of the License, or ";
