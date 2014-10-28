@@ -16,13 +16,14 @@ using namespace Gdiplus;
 #pragma resource "*.dfm"
 TFormGraph *FormGraph;
 //---------------------------------------------------------------------------
+#define WX 375
+#define WY 375
+//---------------------------------------------------------------------------
+int drawingColor = 0;
+//---------------------------------------------------------------------------
 __fastcall TFormGraph::TFormGraph(TComponent* Owner) : TForm(Owner), isFunkReady(false), opt(Funktion::nichts)
 {
 }
-//---------------------------------------------------------------------------
-int WX = 375;
-int WY = 375;
-int drawingColor = 0;
 //---------------------------------------------------------------------------
 AnsiString prepareFunctionString(AnsiString in)
 {
@@ -507,7 +508,7 @@ void __fastcall TFormGraph::MenuLicenseClick(TObject *Sender)
 void __fastcall TFormGraph::about()
 {
     AnsiString strLicense = "WinGraph\n";
-    strLicense += "Copyright (c) 2002 - 2014 by Stefan Hüsges\n\n";
+    strLicense += "Copyright (c) 2002 - 2014 by Stefan HÃ¼sges\n\n";
     strLicense += "This program is free software: you can redistribute it and/or modify ";
     strLicense += "it under the terms of the GNU General Public License as published by ";
     strLicense += "the Free Software Foundation, either version 3 of the License, or ";
