@@ -104,7 +104,7 @@ object FormInfo: TFormInfo
     Font.Name = 'Times New Roman'
     Font.Style = [fsItalic, fsUnderline]
     ParentFont = False
-    OnClick = LabelInfoHomepageClick
+    OnClick = LabelInfoHomepageTextClick
   end
   object LabelInfoVersionText: TLabel
     Left = 100

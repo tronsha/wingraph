@@ -20,7 +20,7 @@ class TFormInfo : public TForm
         TLabel *LabelInfoCopyrightText;
         TLabel *LabelInfoVersionText;
         TLabel *LabelInfoHomepageText;
-        void __fastcall LabelInfoHomepageClick(TObject *Sender);
+        void __fastcall LabelInfoHomepageTextClick(TObject *Sender);
         void __fastcall ButtonOKClick(TObject *Sender);
         void __fastcall FormDeactivate(TObject *Sender);
         void __fastcall FormCreate(TObject *Sender);

@@ -9,7 +9,9 @@
 #include "MainForm.h"
 #include "InfoForm.h"
 #include "SaveForm.h"
+//---------------------------------------------------------------------------
 using namespace Gdiplus;
+#pragma comment (lib, "Gdiplus.lib")
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "SHDocVw_OCX"
@@ -28,12 +30,10 @@ __fastcall TFormGraph::TFormGraph(TComponent* Owner) : TForm(Owner), isFunkReady
 AnsiString prepareFunctionString(AnsiString strFunction)
 {
     AnsiString strPart;
-    for(int index = 1; index < strFunction.Length(); index++)
-    {
+    for (int index = 1; index < strFunction.Length(); index++) {
         strPart = strFunction.SubString(index, 2);
-        if(strPart.c_str()[0] >= '0' && strPart.c_str()[0] <= '9' && (strPart.c_str()[1] == 'x' || strPart.c_str()[1] == '('))
-        {
-            strFunction.Insert("*", index + 1);
+        if (strPart.c_str()[0] >= '0' && strPart.c_str()[0] <= '9' && (strPart.c_str()[1] == 'x' || strPart.c_str()[1] == '(')) {
+                    strFunction.Insert("*", index + 1);
         }
     }
     return strFunction;
@@ -58,13 +58,11 @@ void axis(float xMax, float yMax)
     FormGraph->PaintBox->Canvas->MoveTo(WX / 2, 0);
     FormGraph->PaintBox->Canvas->LineTo(WX / 2, WY);
 
-    for (i = -x + 1; i <= x - 1; i++)
-    {
+    for (i = -x + 1; i <= x - 1; i++) {
         FormGraph->PaintBox->Canvas->MoveTo(WX / 2 - WX / 2 * i / x, WY / 2 - 2);
         FormGraph->PaintBox->Canvas->LineTo(WX / 2 - WX / 2 * i / x, WY / 2 + 3);
     }
-    for (i = -y + 1; i <= y - 1; i++)
-    {
+    for (i = -y + 1; i <= y - 1; i++) {
         FormGraph->PaintBox->Canvas->MoveTo(WX / 2 - 2, WY / 2 - WY / 2 * i / y);
         FormGraph->PaintBox->Canvas->LineTo(WX / 2 + 3, WY / 2 - WY / 2 * i / y);
     }
@@ -112,42 +110,38 @@ void curve(float xMax, float yMax, float step)
 
     FormGraph->PaintBox->Canvas->MoveTo(WX / 2 + pos_x, WY / 2 - pos_y);
 
-    for(x = -xMax; x <= xMax; x = x + step)
-    {
+    for (x = -xMax; x <= xMax; x = x + step) {
         pos_y = (FormGraph->y(x) * scale_y2);
         pos_x = (x * scale_x2);
 
-        if (((WY / 2 - pos_y) >= -2 * WY) && ((WY / 2 - pos_y) <= WY + 2 * WY))
+        if (((WY / 2 - pos_y) >= -2 * WY) && ((WY / 2 - pos_y) <= WY + 2 * WY)) {
             FormGraph->PaintBox->Canvas->LineTo(WX / 2 + pos_x, WY / 2 - pos_y);
-        else
+        } else {
             FormGraph->PaintBox->Canvas->MoveTo(WX / 2 + pos_x, WY / 2 - pos_y);
+        }
     }
 }
 //---------------------------------------------------------------------------
-//float y(x)
 double __fastcall TFormGraph::y(double x)
 {
     double a0nx;
     double result;
 
-    if(FormGraph->EditFourierSynthesis->Text != "")
+    if (FormGraph->EditFourierSynthesis->Text != "") {
         a0nx = FormGraph->EditFourierSynthesis->Text.ToDouble();
-    else
+    } else {
         a0nx = 0;
+    }
 
-    if(FormGraph->MenuFourierSynthesis->Checked == true)
-    {
-        int z;
+    if (FormGraph->MenuFourierSynthesis->Checked == true) {
         result = 0;
-
-        for(z = 1; z < (2 * a0nx); z = z + 2)
-        {
+        for (int z = 1; z < (2 * a0nx); z = z + 2) {
             result = result + (sin(z * x) / z);
         }
         result = (result * 4) / M_PI;
-    }
-    else
+    } else {
         result = funk.berechne(x);
+    }
 
     return result;
 }
@@ -179,16 +173,19 @@ void __fastcall TFormGraph::render(bool reset)
     float xMax = max_x();
     float yMax = max_y();
 
-    if(FormGraph->MenuFourierSynthesis->Checked == true)
+    if (FormGraph->MenuFourierSynthesis->Checked == true) {
         yMax = 2;
+    }
 
-    if(((xMax + yMax) / 2) <= 30)
+    if (((xMax + yMax) / 2) <= 30) {
         step = 0.01 / ((xMax + yMax) / 4);
-    else
+    } else {
         step = 0.01 / 16;
+    }
 
-    if(reset)
+    if (reset) {
         axis(xMax, yMax);
+    }
 
     curve(xMax, yMax, step);
 }
@@ -205,8 +202,9 @@ void __fastcall TFormGraph::TimerStartTimer(TObject *Sender)
     float xMax = max_x();
     float yMax = max_y();
 
-    if(FormGraph->MenuFourierSynthesis->Checked == true)
+    if (FormGraph->MenuFourierSynthesis->Checked == true) {
         yMax = 2;
+    }
 
     axis(xMax, yMax);
     TimerStart->Enabled = false;
@@ -216,36 +214,27 @@ void __fastcall TFormGraph::EditKeyPress(TObject *Sender, char &Key)
 {
     if(FormGraph->MenuFourierSynthesis->Checked == false)
     {
-        if(Key == '\r')
-        {
+        if (Key == '\r') {
             render(true);
             Key = '\0';
-        }
-        if(Key == '.')
+        } else if (Key == '.') {
             Key = ',';
-    }
-    else
-    {
-        if(Key == '\r')
-        {
+        }
+    } else {
+        if (Key == '\r') {
             render(true);
             Key = '\0';
-        }
-        else if(((Key >= '0')&&(Key <= '9'))||(Key == '\x08'))
-            Key = Key;
-        else
+        } else if (((Key >= '0') && (Key <= '9')) || (Key == '\x08')) {
+             Key = Key;
+        } else {
             Key = '\0';
+        }
     }
 }
 //---------------------------------------------------------------------------
 void __fastcall TFormGraph::MenuCloseClick(TObject *Sender)
 {
     Close();
-}
-//---------------------------------------------------------------------------
-void __fastcall TFormGraph::MenuHomepageClick(TObject *Sender)
-{
-    ShellExecute(Handle, "open", "http://www.mpcx.net/", "", "", SW_SHOWMAXIMIZED);
 }
 //---------------------------------------------------------------------------
 void __fastcall TFormGraph::MenuInfoClick(TObject *Sender)
@@ -307,27 +296,20 @@ void __fastcall TFormGraph::MenuSaveClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TFormGraph::changeWindow()
 {
-    if(FormGraph->MenuSpecial->Checked == true)
-    {
-        if((FormGraph->MenuFourierSynthesis->Checked == false)||(FormGraph->EditFourierSynthesis->Text != ""))
-        {
+    if (FormGraph->MenuSpecial->Checked == true) {
+        if ((FormGraph->MenuFourierSynthesis->Checked == false) || (FormGraph->EditFourierSynthesis->Text != "")) {
             FormGraph->render(true);
-        }
-        else
-        {
+        } else {
             FormGraph->TimerStart->Enabled = true;
         }
-    }
-    else
-    {
+    } else {
         FormGraph->TimerStart->Enabled = true;
     }
 }
 //---------------------------------------------------------------------------
 void __fastcall TFormGraph::MenuNormalClick(TObject *Sender)
 {
-    if(FormGraph->MenuSpecial->Checked == true)
-    {
+    if (FormGraph->MenuSpecial->Checked == true) {
         TimerStart->Enabled = true;
     }
 
@@ -403,11 +385,13 @@ void __fastcall TFormGraph::Menu_xAxisValueClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TFormGraph::Button_xAxisClick(TObject *Sender)
 {
-    if(Edit_xAxis->Text.ToDouble() >= 50) Edit_xAxis->Text = 50;
-    if(Edit_xAxis->Text.ToDouble() <= 1) Edit_xAxis->Text = 1;
-
-    if(Menu_yAxisX->Checked == true)
-    {
+    if (Edit_xAxis->Text.ToDouble() >= 50) {
+        Edit_xAxis->Text = 50;
+    }
+    if (Edit_xAxis->Text.ToDouble() <= 1) {
+        Edit_xAxis->Text = 1;
+    }
+    if (Menu_yAxisX->Checked == true) {
         Edit_yAxis->Text = Edit_xAxis->Text;
     }
 
@@ -415,32 +399,29 @@ void __fastcall TFormGraph::Button_xAxisClick(TObject *Sender)
 
     changeWindow();
 
-    if(FormGraph->FunctionEdit->Visible == true)
+    if (FormGraph->FunctionEdit->Visible == true) {
         FormGraph->FunctionEdit->SetFocus();
+    }
 }
 //---------------------------------------------------------------------------
 void __fastcall TFormGraph::Edit_xAxisKeyPress(TObject *Sender, char &Key)
 {
-    if(Key == '\r')
-    {
+    if (Key == '\r') {
         Button_xAxisClick(NULL);
         Key = '\0';
-    }
-    else if(((Key >= '0')&&(Key <= '9'))||(Key == '\x08'))
+    } else if(((Key >= '0') && (Key <= '9')) || (Key == '\x08')) {
         Key = Key;
-    else
+    } else {
         Key = '\0';
+    }
 }
 //---------------------------------------------------------------------------
 void __fastcall TFormGraph::Menu_yAxisXClick(TObject *Sender)
 {
-    if(Menu_yAxisX->Checked == true)
-    {
+    if (Menu_yAxisX->Checked == true) {
         Menu_yAxisX->Checked = false;
         Menu_yAxisValue->Enabled = true;
-    }
-    else
-    {
+    } else {
         Menu_yAxisX->Checked = true;
         Menu_yAxisValue->Enabled = false;
         Edit_yAxis->Text = Edit_xAxis->Text;
@@ -456,36 +437,39 @@ void __fastcall TFormGraph::Menu_yAxisValueClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TFormGraph::Button_yAxisClick(TObject *Sender)
 {
-    if(Edit_yAxis->Text.ToDouble() >= 50)
+    if (Edit_yAxis->Text.ToDouble() >= 50) {
         Edit_yAxis->Text = 50;
-    if(Edit_yAxis->Text.ToDouble() <= 1)
+    }
+    if (Edit_yAxis->Text.ToDouble() <= 1) {
         Edit_yAxis->Text = 1;
+    }
 
     FormGraph->Panel_yAxis->Visible = false;
 
     changeWindow();
 
-    if(FormGraph->FunctionEdit->Visible == true)
+    if (FormGraph->FunctionEdit->Visible == true) {
         FormGraph->FunctionEdit->SetFocus();
+    }
 }
 //---------------------------------------------------------------------------
 void __fastcall TFormGraph::Edit_yAxisKeyPress(TObject *Sender, char &Key)
 {
-    if(Key == '\r')
-    {
+    if (Key == '\r') {
         Button_yAxisClick(NULL);
         Key = '\0';
-    }
-    else if(((Key >= '0')&&(Key <= '9'))||(Key == '\x08'))
+    } else if(((Key >= '0') && (Key <= '9')) || (Key == '\x08')) {
         Key = Key;
-    else
+    } else {
         Key = '\0';
+    }
 }
 //---------------------------------------------------------------------------
 void __fastcall TFormGraph::MenuColorClick(TObject *Sender)
 {
-    if(ColorDialog->Execute())
+    if (ColorDialog->Execute()) {
         drawingColor = ColorDialog->Color;
+    }
 }
 //---------------------------------------------------------------------------
 void __fastcall TFormGraph::MenuLicenseClick(TObject *Sender)

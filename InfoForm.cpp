@@ -12,7 +12,7 @@ __fastcall TFormInfo::TFormInfo(TComponent* Owner) : TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TFormInfo::LabelInfoHomepageClick(TObject *Sender)
+void __fastcall TFormInfo::LabelInfoHomepageTextClick(TObject *Sender)
 {
     ShellExecute(Handle, "open", INFO_HOMEPAGE, "", "", SW_SHOWMAXIMIZED);
 }

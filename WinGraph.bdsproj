@@ -11,7 +11,7 @@
     <CPlusPlusBuilder.Personality>
         <BCBPROJECT>
       <project version="10.0">
-        <property category="build.config" name="active" value="0"/>
+        <property category="build.config" name="active" value="1"/>
         <property category="build.config" name="count" value="1"/>
         <property category="build.config" name="excludedefaultforzero" value="0"/>
         <property category="build.config.0" name="builddir" value="Debug"/>
@@ -26,6 +26,7 @@
         <property category="build.config.1" name="type" value="Toolset"/>
         <property category="build.config.1" name="win32.win32b.builddir" value="Release_Build"/>
         <property category="build.node" name="dontverifylibs" value="0"/>
+        <property category="build.node" name="lastconfig" value="Release_Build"/>
         <property category="build.node" name="libraries" value="inet.lib bcbie.lib vcl.lib rtl.lib"/>
         <property category="build.node" name="name" value="WinGraph.exe"/>
         <property category="build.node" name="packages" value="rtl;vcl;vclx;bcbsmp;teeui;teedb;tee;dss;ibxpress;inetdb;webdsnap;bcboffice2k"/>
@@ -222,7 +223,6 @@
         <FILE FILENAME="SaveForm.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="SaveForm" FORMNAME="FormSave" DESIGNCLASS="" ADDITIONAL="SaveForm.h"/>
         <FILE FILENAME="funktion.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="funktion" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="mathlib.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="mathlib" FORMNAME="" DESIGNCLASS=""/>
-        <FILE FILENAME="GdiPlus.lib" CONTAINERID="LibTool" LOCALCOMMAND="" UNITNAME="GdiPlus" FORMNAME="" DESIGNCLASS=""/>
       </FILELIST>
       <IDEOPTIONS>
         <VersionInfo>
@@ -294,7 +294,6 @@
           <Excluded_Packages Name="c:\program files (x86)\borland\bds\4.0\Bin\dcldbx100.bpl">Borland dbExpress-Komponenten</Excluded_Packages>
           <Excluded_Packages Name="c:\program files (x86)\borland\bds\4.0\Bin\dclnet100.bpl">Borland Internet-Komponenten</Excluded_Packages>
           <Excluded_Packages Name="c:\program files (x86)\borland\bds\4.0\Bin\dclmid100.bpl">Borland MyBase Datenzugriffskomponenten</Excluded_Packages>
-          <Excluded_Packages Name="c:\program files (x86)\borland\bds\4.0\Bin\dclie100.bpl">Internet Explorer-Komponenten</Excluded_Packages>
           <Excluded_Packages Name="c:\program files (x86)\borland\bds\4.0\Bin\dclsoap100.bpl">Borland SOAP-Komponenten</Excluded_Packages>
           <Excluded_Packages Name="c:\program files (x86)\borland\bds\4.0\Bin\dcldbxcds100.bpl">Borland SimpleDataset-Komponente (DBX)</Excluded_Packages>
           <Excluded_Packages Name="c:\program files (x86)\borland\bds\4.0\bin\dclado100.bpl">Borland ADO DB-Komponenten</Excluded_Packages>
@@ -305,7 +304,7 @@
           <Excluded_Packages Name="c:\program files (x86)\borland\bds\4.0\Bin\bcbofficexp100.bpl">Borland C++Builder Office XP Servers Package</Excluded_Packages>
           <Excluded_Packages Name="c:\program files (x86)\borland\bds\4.0\Bin\dclbcbsmp100.bpl">Borland Sample Controls Design Time Package</Excluded_Packages>
           <Excluded_Packages Name="c:\program files (x86)\borland\bds\4.0\Bin\bcbie100.bpl">Borland C++Builder Internet Explorer 5 Components Package</Excluded_Packages>
-          <Excluded_Packages Name="c:\program files (x86)\borland\bds\4.0\Bin\dcltee100.bpl">TeeChart-Komponenten </Excluded_Packages>
+          <Excluded_Packages Name="c:\program files (x86)\borland\bds\4.0\Bin\dcltee100.bpl">TeeChart-Komponenten</Excluded_Packages>
         </Excluded_Packages>
         <Linker>
           <Linker Name="LibPrefix"></Linker>

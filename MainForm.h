@@ -89,7 +89,6 @@ class TFormGraph : public TForm
         void __fastcall Example_xClick(TObject *Sender);
         void __fastcall Example_1xClick(TObject *Sender);
         void __fastcall Example_sin_xClick(TObject *Sender);
-        void __fastcall MenuHomepageClick(TObject *Sender);
         void __fastcall DrawButtonClick(TObject *Sender);
         void __fastcall Button_xAxisClick(TObject *Sender);
         void __fastcall Button_yAxisClick(TObject *Sender);
@@ -111,12 +110,12 @@ class TFormGraph : public TForm
 //---------------------------------------------------------------------------
 extern PACKAGE TFormGraph *FormGraph;
 //---------------------------------------------------------------------------
-    int max_x();
-    int max_y();
-    void axis(float, float);
-    float scale_x(float);
-    float scale_y(float);
-    void curve(float, float, float);
-    AnsiString prepareFunctionString(AnsiString);
+int max_x();
+int max_y();
+float scale_x(float);
+float scale_y(float);
+void axis(float, float);
+void curve(float, float, float);
+AnsiString prepareFunctionString(AnsiString);
 //---------------------------------------------------------------------------
 #endif
