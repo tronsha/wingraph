@@ -4,7 +4,7 @@ object FormInfo: TFormInfo
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Info '#252'ber WinGraph'
-  ClientHeight = 181
+  ClientHeight = 197
   ClientWidth = 302
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -18,13 +18,13 @@ object FormInfo: TFormInfo
   OnDeactivate = FormDeactivate
   DesignSize = (
     302
-    181)
+    197)
   PixelsPerInch = 96
   TextHeight = 13
   object LabelInfoName: TLabel
     Left = 31
     Top = 8
-    Width = 233
+    Width = 235
     Height = 64
     Caption = 'WinGraph'
     Font.Charset = DEFAULT_CHARSET
@@ -64,8 +64,8 @@ object FormInfo: TFormInfo
   end
   object LabelInfoVersion: TLabel
     Left = 31
-    Top = 115
-    Width = 43
+    Top = 131
+    Width = 44
     Height = 15
     Anchors = [akBottom]
     Caption = 'Version:'
@@ -93,7 +93,7 @@ object FormInfo: TFormInfo
   object LabelInfoHomepageText: TLabel
     Left = 100
     Top = 99
-    Width = 111
+    Width = 112
     Height = 15
     Cursor = crHandPoint
     Anchors = [akBottom]
@@ -108,11 +108,11 @@ object FormInfo: TFormInfo
   end
   object LabelInfoVersionText: TLabel
     Left = 100
-    Top = 115
+    Top = 131
     Width = 24
     Height = 15
     Anchors = [akBottom]
-    Caption = '2.5.1'
+    Caption = '2.5.2'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -120,14 +120,45 @@ object FormInfo: TFormInfo
     Font.Style = []
     ParentFont = False
   end
+  object LabelInfoSource: TLabel
+    Left = 31
+    Top = 115
+    Width = 40
+    Height = 15
+    Anchors = [akBottom]
+    Caption = 'Source:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Times New Roman'
+    Font.Style = []
+    ParentFont = False
+  end
+  object LabelInfoSourceText: TLabel
+    Left = 100
+    Top = 115
+    Width = 203
+    Height = 15
+    Cursor = crHandPoint
+    Anchors = [akBottom]
+    Caption = 'https://github.com/tronsha/wingraph'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clNavy
+    Font.Height = -13
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsItalic, fsUnderline]
+    ParentFont = False
+    OnClick = LabelInfoSourceTextClick
+  end
   object ButtonOK: TButton
     Left = 114
-    Top = 147
+    Top = 163
     Width = 75
     Height = 25
     Anchors = [akBottom]
     Caption = 'OK'
     TabOrder = 0
     OnClick = ButtonOKClick
+    ExplicitTop = 147
   end
 end

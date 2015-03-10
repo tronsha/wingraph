@@ -480,7 +480,7 @@ void __fastcall TFormGraph::MenuLicenseClick(TObject *Sender)
 void __fastcall TFormGraph::about()
 {
     AnsiString strLicense = "WinGraph\n";
-    strLicense += "Copyright (c) 2002 - 2014 by Stefan Hüsges\n\n";
+    strLicense += "Copyright (c) 2002 - 2015 by Stefan Hüsges\n\n";
     strLicense += "This program is free software: you can redistribute it and/or modify ";
     strLicense += "it under the terms of the GNU General Public License as published by ";
     strLicense += "the Free Software Foundation, either version 3 of the License, or ";

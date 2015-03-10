@@ -17,6 +17,11 @@ void __fastcall TFormInfo::LabelInfoHomepageTextClick(TObject *Sender)
     ShellExecute(Handle, "open", INFO_HOMEPAGE, "", "", SW_SHOWMAXIMIZED);
 }
 //---------------------------------------------------------------------------
+void __fastcall TFormInfo::LabelInfoSourceTextClick(TObject *Sender)
+{
+    ShellExecute(Handle, "open", INFO_GITHUB, "", "", SW_SHOWMAXIMIZED);
+}
+//---------------------------------------------------------------------------
 void __fastcall TFormInfo::ButtonOKClick(TObject *Sender)
 {
     Visible = false;
@@ -32,7 +37,7 @@ void __fastcall TFormInfo::FormCreate(TObject *Sender)
     LabelInfoName->Caption = INFO_PROGRAM;
     LabelInfoCopyrightText->Caption = INFO_COPYRIGHT;
     LabelInfoHomepageText->Caption = INFO_HOMEPAGE;
+    LabelInfoSourceText->Caption = INFO_GITHUB;
     LabelInfoVersionText->Caption = INFO_VERSION;
 }
 //---------------------------------------------------------------------------
-

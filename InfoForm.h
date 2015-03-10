@@ -17,13 +17,16 @@ class TFormInfo : public TForm
         TLabel *LabelInfoCopyright;
         TLabel *LabelInfoVersion;
         TLabel *LabelInfoHomepage;
+        TLabel *LabelInfoSource;
         TLabel *LabelInfoCopyrightText;
         TLabel *LabelInfoVersionText;
         TLabel *LabelInfoHomepageText;
+        TLabel *LabelInfoSourceText;
         void __fastcall LabelInfoHomepageTextClick(TObject *Sender);
         void __fastcall ButtonOKClick(TObject *Sender);
         void __fastcall FormDeactivate(TObject *Sender);
         void __fastcall FormCreate(TObject *Sender);
+        void __fastcall LabelInfoSourceTextClick(TObject *Sender);
     private: // User declarations
     public:  // User declarations
         __fastcall TFormInfo(TComponent* Owner);
