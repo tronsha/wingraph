@@ -7,8 +7,9 @@ This program is written and compiled with the Turbo C++ 2006 Explorer Edition
 
 **Stefan Hüsges**
 
-* [GitHub][1]
-* [Homepage][2]
+:computer: [Homepage][1]
+
+:octocat: [GitHub][2]
 
 ## Screenshot
 
@@ -29,7 +30,7 @@ The files _funktion.cpp_, _funktion.h_, _mathlib.cpp_ and _mathlib.h_ are copyri
 
 The function _GetEncoderClsid_ is copied from [here][4]
 
-[1]: https://github.com/tronsha
-[2]: http://www.mpcx.net
+[1]: http://www.mpcx.net
+[2]: https://github.com/tronsha
 [3]: http://www.gnu.org/licenses/gpl-3.0
 [4]: http://msdn.microsoft.com/en-us/library/windows/desktop/ms533843(v=vs.85).aspx
