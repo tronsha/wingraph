@@ -137,7 +137,7 @@ object FormInfo: TFormInfo
   object LabelInfoSourceText: TLabel
     Left = 100
     Top = 115
-    Width = 203
+    Width = 210
     Height = 15
     Cursor = crHandPoint
     Anchors = [akBottom]
